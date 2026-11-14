@@ -11,8 +11,3 @@ def getMoisture(samples=1):
         sleep(5)
     PWR.write_digital(0)
     return total
-
-while True:
-    print(getMoisture())
-    sleep(500)
-
