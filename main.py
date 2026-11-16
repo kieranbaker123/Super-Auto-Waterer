@@ -12,18 +12,20 @@ MOISTURE_THRESHOLD = 300
 CHECK_INTERVAL_MS = 3*60*60*1000 # 3 hours
 
 def main():
+    r.setup()
+    
     while True:
         moisture = getMoisture()
         temp = getTemperature()
         
-        if button_a.is_pressed() or button_b.is_pressed:
-            flashTempMoisture(temp, moisture)
-            sleep(5000) # ensure time betwen this message and a watering message
+        flashTempMoisture(temp, moisture)
+        sleep(3000) # ensure time betwen this message and a watering message
         
-        if moisture < MOISTURE_THRESHOLD:
+        clearDisplay()
+        
+        if moisture < MOISTURE_THRESHOLD or button_b.is_pressed():
             flashWatering()
             waterPlant()
-            sleep(5000) # leave message on screen for a bit
             
         clearDisplay()
         
