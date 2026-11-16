@@ -1,3 +1,5 @@
+from microbit import *
+
 def getTemperature(addr=0x76):
     i2c.init(freq=100000, sda=pin20, scl=pin19)
 

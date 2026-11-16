@@ -5,13 +5,11 @@ from mb_lcd import LCD
 
 lcd = LCD()
 def flashTempMoisture(temperature, moistureLevel):
-    lcd.write_word('It is currently {}°F The current moisture level is {}'.format(temperature, moistureLevel))
-
-def flashWaterCycle(time):
-    lcd.write_word('It has been {} since the last watering cycle'.format(time))
-
+    lcd.write(0,0,'Temp {:.2f}{}C'.format(temperature, chr(223)))
+    lcd.write(0,1,'Moisture: {}'.format(moistureLevel))
+    
 def flashWatering():
-    lcd.write_word('The device is currently watering')
+    lcd.write(0,0,'Watering...')
 
 def clearDisplay():
     lcd.clear()
